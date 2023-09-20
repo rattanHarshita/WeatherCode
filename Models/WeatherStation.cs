@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API_Project.Models
 {
@@ -14,5 +15,7 @@ namespace API_Project.Models
         public string? Longitude { get; set; }
 
         public List<Variable> Variables { get; set; }
+        [NotMapped]
+        public string?  timestamp { get; set; }
     }
 }

@@ -39,14 +39,68 @@ namespace API_Project.Controllers
 
                 var customTableName = "Data" + item.Id;
 
-                // var mytable = await _context..
-                                
+                #region Calculation of latest time
+
+                if (customTableName == nameof(Data1).ToString())
+                {
+                    var latestTime = await _context.Data1s.MaxAsync(d => d.Timestamp);
+                    item.timestamp = latestTime.ToString();
+                }
+                else if(customTableName == nameof(Data2).ToString())
+                {
+                    var latestTime = await _context.Data2s.MaxAsync(d => d.Timestamp);
+                    item.timestamp = latestTime.ToString();
+                }
+                else if(customTableName == nameof(Data3).ToString())
+                {
+                    var latestTime = await _context.Data3s.MaxAsync(d => d.Timestamp);
+                    item.timestamp = latestTime.ToString();
+                }
+                else if (customTableName == nameof(Data4).ToString())
+                {
+                    var latestTime = await _context.Data4s.MaxAsync(d => d.Timestamp);
+                    item.timestamp = latestTime.ToString();
+                }
+                else if (customTableName == nameof(Data5).ToString())
+                {
+                    var latestTime = await _context.Data5s.MaxAsync(d => d.Timestamp);
+                    item.timestamp = latestTime.ToString();
+                }
+                else if (customTableName == nameof(Data6).ToString())
+                {
+                    var latestTime = await _context.Data6s.MaxAsync(d => d.Timestamp);
+                    item.timestamp = latestTime.ToString();
+                }
+                else if (customTableName == nameof(Data7).ToString())
+                {
+                    var latestTime = await _context.Data7s.MaxAsync(d => d.Timestamp);
+                    item.timestamp = latestTime.ToString();
+                }
+                else if (customTableName == nameof(Data8).ToString())
+                {
+                    var latestTime = await _context.Data8s.MaxAsync(d => d.Timestamp);
+                    item.timestamp = latestTime.ToString();
+                }
+                else if (customTableName == nameof(Data9).ToString())
+                {
+                    var latestTime = await _context.Data9s.MaxAsync(d => d.Timestamp);
+                    item.timestamp = latestTime.ToString();
+                }
+                else if (customTableName == nameof(Data10).ToString())
+                {
+                    var latestTime = await _context.Data10s.MaxAsync(d => d.Timestamp);
+                    item.timestamp = latestTime.ToString();
+                }
+
+                #endregion
+
+                //var mytable = await _context.""
+
             }
-
-
-
             return Ok(WeatherStation);
         }
+
+
 
     }
 }
