@@ -2,7 +2,6 @@ using API_Project.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var MyAllowSpecificOrigins = "Mypolicy";
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -13,15 +12,18 @@ builder.Services.AddSwaggerGen();
 //Adding and Registering Db context to project
 builder.Services.AddDbContext<Proa_CodingContext>();
 
+//Adding cross origin dependencies
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(MyAllowSpecificOrigins,
-                          policy =>
-                          {
-                              policy.WithOrigins("http://localhost:3000/")
-                                                  .AllowAnyHeader()
-                                                  .AllowAnyMethod();
-                          });
+    options.AddDefaultPolicy(
+        builder =>
+        {
+
+            //you can configure your custom policy
+            builder.AllowAnyOrigin()
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+        });
 });
 
 var app = builder.Build();
@@ -38,6 +40,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 
-app.UseCors(MyAllowSpecificOrigins);
+app.UseCors();
 
 app.Run();
